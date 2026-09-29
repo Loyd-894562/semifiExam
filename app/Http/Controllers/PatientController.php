@@ -11,6 +11,6 @@ class PatientController extends Controller
         $patients = Patient::all();
 
         return view('patients.index',
-        compact('patient'));
+        compact('patients'));
     }
 }

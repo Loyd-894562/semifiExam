@@ -1,18 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+@extends('layouts.app')
 
-</head>
-<body>
-    <a href="{{ route('dashboard') }}">Dashboard</a>
-    <a href="{{ route('doctors.index') }}">Doctors</a>
-    <a href="{{ route('patients.index') }}">Patients</a>
-    <a href="{{ route('appointments.index') }}">Appointments</a>
-  
-</body>
-</html>
+@section('content')
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h2>Patients List</h2>
+
+   
+</div>
+
+@if(session('success'))
+
+    <div class="alert alert-success">
+
+        {{ session('success') }}
+
+    </div>
+
+@endif
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Year Level</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach($patients as $patient)
+
+            <tr>
+
+                <td>{{ $patient->student_id }}</td>
+
+                <td>{{ $patient->name }}</td>
+
+                <td>{{ $patient->course }}</td>
+
+                <td>{{ $patient->year_level }}</td>
+
+            </tr>
+
+        @endforeach
+
+    </tbody>
+
+</table>
+
+@endsection
